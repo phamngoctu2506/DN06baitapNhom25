@@ -87,12 +87,36 @@ function xemChiTiet(id) {
             document.getElementById('img').value = result.data.img;
             document.getElementById('desc').value = result.data.desc;
             document.getElementById('type').value = result.data.type;
-            // thêm btn capạ nhật
+   
             
             document.querySelector("#btnThemSP").click();
-            document.querySelector("#myModal .modal-footer").innerHTML = `<button class="btn btn-primary" onclick="capNhatSanPham(${id})">Cập Nhật</button>`
+            document.querySelector(".btnCapNhat").innerHTML = `<button class="btn btn-primary" onclick="capNhatSanPham(${id})">Cập Nhật</button>`
         })
         .catch(function (error) {
+            console.log(error);
+        })
+}
+
+function capNhatSanPham(id) {
+    // lấy data mới của sp
+    var name = document.getElementById('name').value;
+    var price = document.getElementById('price').value;
+    var screen = document.getElementById('screen').value;
+    var backCamera = document.getElementById('backCamera').value;
+    var frontCamera = document.getElementById('frontCamera').value;
+    var img = document.getElementById('img').value;
+    var desc = document.getElementById('desc').value;
+    var type = document.getElementById('type').value;
+    var newData = new Products(name,price,screen,backCamera,frontCamera,img,desc,type);
+    // console.log(newData);
+
+    dsProduct.capNhatSP(id, newData)
+    .then(function(result){
+        // console.log(result.data);
+        document.querySelector("#myModal .close").click();
+        layDanhSachSanPham();
+    })
+    .catch(function (error) {
             console.log(error);
         })
 }

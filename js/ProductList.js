@@ -29,4 +29,11 @@ function ProductList() {
         
         });
     }
+    this.capNhatSP = function(id, newData){
+        return axios({
+            method: 'put',
+            url: `https://636a3113b10125b78fd342a4.mockapi.io/Product/${id}`,
+            data: newData
+          });
+    }
 }

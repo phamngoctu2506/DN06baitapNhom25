@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Quản lý người dùng</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+    <!-- link CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css"
+        integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-sm navbar-dark bg-primary">
+        <div class="container">
+            <a class="navbar-brand" href="#">Quản lí người dùng</a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse"
+                data-target="#collapsibleNavId" aria-controls="collapsibleNavId" aria-expanded="false"
+                aria-label="Toggle navigation"></button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#"><i class="fa fa-cart-arrow-down"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <header class="display-4 my-4">
+            <h1>Cập Nhật, Thêm, Xóa, Sửa sản phẩm</h1>
+        </header>
+        <ul class="nav nav-tabs" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link active" href="#DanhSachSP" role="tab" data-toggle="tab">Danh sách sản phẩm</a>
+            </li>
+        </ul>
+        <br />
+        <div class="tab-content">
+            <div role="tabpanel" class="tab-pane  in active" id="DanhSachSP">
+                <div class="row">
+                    <div class="col-md-8">
+                        <button id="btnThemSP" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+                            <i class="fa fa-plus mr-1"></i>
+                            Thêm Mới
+                        </button>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-group mb-3">
+                            <input id="inputTK" type="text" class="form-control" placeholder="Nhập từ khóa"
+                                aria-label="Recipient's username" aria-describedby="basic-addon2" />
+                            <div class="input-group-append">
+                                <span class="input-group-text" id="basic-addon2"><i class="fa fa-search"></i></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="clear-fix"></div>
+                <div class="tblSanPham" id="tblSanPham">
+                    <table class="table table-bordered">
+                        <thead>
+                            <th>STT</th>
+                            <th>Tên Sản Phẩm</th>
+                            <th>Giá</th>
+                            <th>Màng Hình</th>
+                            <th>Hình Ảnh</th>
+                            <th>Mô Tả</th>
+                            <th>Loại</th>
+                        </thead>
+                        <tbody id="tblDanhSachSP"></tbody>
+                    </table>
+                </div>
+                <br />
+            </div>
+            <div class="modal fade" id="myModal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">Thông Tin Sản Phẩm</h4>
+                            <button type="button" class="close" data-dismiss="modal">
+                                &times;
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label>Tên Sản Phẩm</label>
+                                <input id="name" class="form-control" placeholder="Nhập vào tên sản phẩm" />
+                            </div>
+                            <div class="form-group">
+                                <label>Giá</label>
+                                <input id="price" class="form-control" placeholder="Nhập giá" />
+                            </div>
+                            <div class="form-group">
+                                <label>screen</label>
+                                <input id="screen" class="form-control" placeholder="Nhập thông tin màn hình" />
+                            </div>
+                            <div class="form-group">
+                                <label>Camera sau</label>
+                                <input id="backCamera" class="form-control" placeholder="Nhập thông tin camera sau" />
+                            </div>
+                            <div class="form-group">
+                                <label>Camera trước</label>
+                                <input id="frontCamera" class="form-control"
+                                    placeholder="Nhập thông tin camera trước" />
+                            </div>
+                            <div class="form-group">
+                                <label>Hình Ảnh</label>
+                                <input id="img" class="form-control" placeholder="Nhập vào hình sản phẩm" />
+                            </div>
+                            <div class="form-group">
+                                <label>Mô tả</label>
+                                <textarea class="form-control" name="" id="desc" cols="30" rows="2"
+                                    placeholder="Nhập vào mô tả"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Loại</label>
+                                <input id="type" class="form-control" placeholder="Loại Sản phẩm" />
+                            </div>
+                            <button class="btn btn-success" onclick="themSanPham()">Thêm</button>
+                        </div>
+
+                        <div class="modal-footer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <style>
+        #container {
+            min-width: 310px;
+            max-width: 800px;
+            height: 400px;
+            margin: 0 auto;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <!-- MAIN JS -->
+    <script src="./js/ProductList.js"></script>
+    <script src="./js/Products.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+
+</html>

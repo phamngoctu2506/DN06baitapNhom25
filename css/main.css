@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body{
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+}
+header{
+    background-color: #d8afaf;
+}
+
+header .navbar-brand{
+    color: rgb(70, 75, 155);
+    font-size: 40px;
+    font-weight: 700;
+}
+
+header .nav-item a{
+    color: rgb(70, 75, 155);
+    font-size: 18px;
+}
+.Banner{
+    background:#e6e6e6;
+}
+.pro__item{
+    background: #fff;
+    margin: 20px;
+    padding: 15px;
+    border-radius: 10px;
+}
